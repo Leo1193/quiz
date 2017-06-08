@@ -5,6 +5,7 @@ class ChoicesController < ApplicationController
     correct = params[:correct] == '1'
     new = Choice.create(:text =>text, :correct => correct, :question_id => @question.id)
 
+
     if new.correct
       @question.answer = new
     end
@@ -12,7 +13,6 @@ class ChoicesController < ApplicationController
     redirect_to question_path(@question)
 
   end
-
 
   def destroy
     @question = Question.find(params[:question])

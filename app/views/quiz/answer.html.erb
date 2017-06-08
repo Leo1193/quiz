@@ -3,31 +3,30 @@
   <%= @question[:text] %>
 </p>
 <div id="feedback-choices">
-  <% @choices.each do |choice|%>
-
-      <% if(choice[:correct]) %>
-          <p class="correct feedback-choice">
-      <% elsif choice == @choice %>
-          <p class="incorrect feedback-choice">
-      <% else %>
-          <p class="feedback-choice">
-      <% end %>
-      <% choice[:text] %>
+  <% @choices.each do|choice| %>
+  <% if(choice[:correct]) %>
+      <p class="correct feedback-choice">
+          <% elsif choice == @choice %>
+      <p class="incorrect feedback-choice">
+          <% else %>
+      <p class="feedback-choice">
+          <% end %>
+      <%= choice[:text] %>
       </p>
-  <% end %>
+      <% end %>
 </div>
 <p class="feedback">
   <% if @correct %>
-      Correct!
-  <% else %>
-      Incorrect!
-  <% end %>
+  Correct!
+      <% else %>
+  Incorrect!
+      <% end %>
 </p>
-<%= form_tag({:controller => 'quiz', :action => 'question'}) do %>
-    <div class="center">
-      <%= submit_tag('continue', :class => 'submit') %>
-    </div>
+<%= form_tag({:controller => 'quiz', :action =>'question'})do %>
+<div class="center">
+  <%= submit_tag('Continue', :class=>'submit') %>
+</div>
 <% end %>
 <% content_for(:title) do %>
-    Question <%= @current + 1 %> of <%= @total %>
+Question <%= @current +1 %>of <%= @total %>
 <% end %>

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  resource :questions
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  resources :questions
 
   get "quiz/index"
-  post"quiz/start"
+  post "quiz/start"
   get "quiz/question"
   post "quiz/question"
   post "quiz/answer"
@@ -11,6 +14,5 @@ Rails.application.routes.draw do
   post "choices/create"
   post "choices/destroy"
 
-  root 'quiz#index'
 
 end
